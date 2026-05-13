@@ -1,90 +1,166 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Ritika weds Sanket · 11 & 12 December 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=Lato:wght@300;400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=Lato:wght@300;400;700&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --gold:#c9973a;--gold-light:#e8d5a3;--gold-dark:#8b6520;--gold-glow:#f0d878;
-  --cream:#fdf8f0;--deep:#1a0f00;--text:#3d2800;--muted:#9a8060;
-  --mehendi-bg:#e8f5e0;--mehendi-mid:#5a8a3c;--mehendi-dark:#2d5016;
-  --mahera-bg:#fffbe0;--mahera-mid:#c8a800;--mahera-dark:#7a6200;
-  --akshada-bg:#f0e8ff;--akshada-mid:#7040c0;--akshada-dark:#3a1880;
-  --panigrahan-bg:#ffe8f5;--panigrahan-mid:#c03080;--panigrahan-dark:#7a0050;
-  --sangeet-cyan:#00ffee;--sangeet-pink:#ff2090;--sangeet-yellow:#ffee00;
+:root{
+  --gold:#c9973a;--gold-l:#e8d5a3;--gold-d:#7a5518;--gold-g:#f5e070;
+  --cream:#fdf8f0;--deep:#1a0c00;--text:#3d2800;--muted:#9a8060;
+  --me-bg:#e8f5e0;--me-m:#4a7a2c;--me-d:#1e3f08;
+  --ma-bg:#fffbe0;--ma-m:#b89600;--ma-d:#6a5200;
+  --ak-bg:#f0e8ff;--ak-m:#6030b0;--ak-d:#2a0870;
+  --pa-bg:#ffe8f5;--pa-m:#b02070;--pa-d:#600040;
+  --sg-c:#00ffee;--sg-p:#ff2090;--sg-y:#ffee00;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--cream);font-family:'Lato',sans-serif;color:var(--text);overflow-x:hidden;}
+html,body{height:100%;overflow-x:hidden;}
+body{background:#1a0c00;font-family:'Lato',sans-serif;color:var(--text);}
 
+/* ═══════════ WAX SEAL SCREEN ═══════════ */
+#sealScreen{
+  position:fixed;inset:0;z-index:99999;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:radial-gradient(ellipse at center,#2a1400 0%,#0d0600 100%);
+  overflow:hidden;
+}
+#sealScreen .dust{
+  position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
+  pointer-events:none;
+}
+.seal-pre{
+  font-family:'Cinzel',serif;font-size:11px;letter-spacing:.4em;
+  color:rgba(201,151,58,.5);margin-bottom:36px;
+  animation:fadeIn 1.2s ease both;
+  text-transform:uppercase;
+}
+.seal-wrap{position:relative;width:240px;height:240px;cursor:pointer;animation:floatSeal 3s ease-in-out infinite;}
+@keyframes floatSeal{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.seal-wrap:hover .seal-body{filter:drop-shadow(0 0 28px rgba(201,151,58,.9));}
+.seal-wrap:active{transform:scale(0.94)!important;}
+
+.seal-body{
+  width:240px;height:240px;position:relative;
+  filter:drop-shadow(0 8px 32px rgba(0,0,0,.8)) drop-shadow(0 0 18px rgba(201,151,58,.45));
+  transition:filter .3s;
+}
+.seal-body svg{width:100%;height:100%;}
+
+.seal-hint{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:14px;color:rgba(201,151,58,.65);
+  margin-top:30px;letter-spacing:.08em;
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:.65}50%{opacity:.25}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* CRACK ANIMATION */
+.seal-crack{
+  position:absolute;inset:0;pointer-events:none;opacity:0;
+  transition:opacity .1s;
+}
+.breaking .seal-crack{opacity:1;}
+.breaking .seal-body{animation:sealBreak .55s ease-in forwards!important;}
+@keyframes sealBreak{
+  0%{transform:scale(1) rotate(0deg);filter:drop-shadow(0 0 40px rgba(201,151,58,1));}
+  30%{transform:scale(1.08) rotate(-2deg);}
+  60%{transform:scale(1.15) rotate(3deg);opacity:.8;}
+  100%{transform:scale(1.4) rotate(-5deg);opacity:0;}
+}
+.wax-shards{position:absolute;inset:0;pointer-events:none;}
+.shard{
+  position:absolute;width:18px;height:14px;
+  background:linear-gradient(135deg,#a03020,#7a2015);
+  clip-path:polygon(50% 0%,100% 50%,80% 100%,20% 100%,0% 50%);
+  opacity:0;
+}
+
+/* ═══════════ MAIN APP ═══════════ */
+#app{display:none;min-height:100vh;background:var(--cream);}
 #petalLayer{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden;}
 .petal{position:absolute;top:-40px;opacity:0;border-radius:70% 30% 70% 30%;animation:petalFall linear infinite;}
-@keyframes petalFall{0%{transform:translateY(0) rotate(0deg) translateX(0);opacity:.85;}50%{transform:translateY(50vh) rotate(200deg) translateX(28px);opacity:.6;}100%{transform:translateY(110vh) rotate(400deg) translateX(-18px);opacity:0;}}
-
-.section{display:none;min-height:100vh;}
-.section.active{display:flex;flex-direction:column;align-items:center;}
-.page-wrapper{max-width:480px;margin:0 auto;min-height:100vh;position:relative;padding-bottom:76px;}
-
-/* ── COVER ── */
-#page-cover{
-  background:radial-gradient(ellipse 60% 40% at 50% 10%,#f5e4a0 0%,transparent 70%),
-             radial-gradient(ellipse 80% 60% at 50% 90%,#e8d088 0%,transparent 70%),
-             linear-gradient(170deg,#fdf3d0 0%,#f5e8b0 40%,#ede0a0 100%);
-  padding:60px 24px 100px;text-align:center;position:relative;overflow:hidden;justify-content:flex-start;
+@keyframes petalFall{
+  0%{transform:translateY(0) rotate(0) translateX(0);opacity:.85;}
+  50%{transform:translateY(50vh) rotate(200deg) translateX(28px);opacity:.6;}
+  100%{transform:translateY(110vh) rotate(400deg) translateX(-18px);opacity:0;}
 }
-#page-cover::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:440px;height:440px;background:repeating-conic-gradient(from 0deg,rgba(201,151,58,.06) 0deg 10deg,transparent 10deg 20deg);border-radius:50%;pointer-events:none;}
 
-.ganesh-block{margin-bottom:20px;animation:fadeUp .8s ease both;}
-.om-svg{width:68px;height:68px;}
-.stotra{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--gold-dark);line-height:2;letter-spacing:.04em;}
-.save-label{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.45em;color:var(--gold-dark);margin-bottom:14px;animation:fadeUp .8s .2s ease both;}
-.bride-name,.groom-name{font-family:'Cinzel Decorative',serif;font-size:clamp(30px,9vw,54px);color:var(--gold-dark);line-height:1.1;text-shadow:0 2px 16px rgba(201,151,58,.4);}
-.bride-name{animation:fadeUp .8s .35s ease both;}
-.groom-name{animation:fadeUp .8s .6s ease both;}
-.weds-word{font-family:'Dancing Script',cursive;font-size:clamp(20px,6vw,34px);color:var(--gold);display:block;margin:6px 0;animation:fadeUp .8s .5s ease both;}
+.page-wrapper{max-width:480px;margin:0 auto;min-height:100vh;position:relative;padding-bottom:76px;}
+.section{display:none;min-height:100vh;flex-direction:column;align-items:center;}
+.section.active{display:flex;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 
-.gold-frame{border:2px solid var(--gold);border-radius:24px;padding:6px;margin:20px auto;width:290px;animation:fadeUp .8s .7s ease both;position:relative;}
-.gold-frame-inner{border:1px solid var(--gold-light);border-radius:20px;padding:18px;}
-.gc{position:absolute;width:18px;height:18px;border-color:var(--gold);border-style:solid;}
-.gc.tl{top:4px;left:4px;border-width:2px 0 0 2px;border-radius:5px 0 0 0;}
-.gc.tr{top:4px;right:4px;border-width:2px 2px 0 0;border-radius:0 5px 0 0;}
-.gc.bl{bottom:4px;left:4px;border-width:0 0 2px 2px;border-radius:0 0 0 5px;}
-.gc.br{bottom:4px;right:4px;border-width:0 2px 2px 0;border-radius:0 0 5px 0;}
+/* ═══════════ COVER ═══════════ */
+#page-cover{
+  background:
+    radial-gradient(ellipse 65% 45% at 50% 8%,#f8eecc 0%,transparent 65%),
+    radial-gradient(ellipse 85% 55% at 50% 92%,#f0e0a0 0%,transparent 65%),
+    linear-gradient(170deg,#fdf5d0 0%,#f8e8a8 45%,#f0dc90 100%);
+  padding:56px 24px 96px;text-align:center;position:relative;overflow:hidden;justify-content:flex-start;
+}
+#page-cover::before{
+  content:'';position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);width:460px;height:460px;
+  background:repeating-conic-gradient(from 0deg,rgba(201,151,58,.05) 0deg 9deg,transparent 9deg 18deg);
+  border-radius:50%;pointer-events:none;
+}
+.ganesh-block{margin-bottom:18px;animation:fadeUp .9s ease both;}
+.stotra{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--gold-d);line-height:2.1;letter-spacing:.04em;}
+.save-label{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.45em;color:var(--gold-d);margin-bottom:16px;animation:fadeUp .9s .2s ease both;}
+.bride-name,.groom-name{font-family:'Cinzel Decorative',serif;font-size:clamp(28px,9vw,52px);color:var(--gold-d);line-height:1.1;text-shadow:0 2px 18px rgba(201,151,58,.45);}
+.bride-name{animation:fadeUp .9s .35s ease both;}
+.groom-name{animation:fadeUp .9s .6s ease both;}
+.weds-word{font-family:'Dancing Script',cursive;font-size:clamp(20px,6.5vw,36px);color:var(--gold);display:block;margin:8px 0;animation:fadeUp .9s .5s ease both;}
 
-.scratch-wrap{position:relative;width:250px;margin:0 auto;}
-.scratch-reveal{width:250px;height:112px;background:linear-gradient(135deg,#fff9e8,#f5e8b0);border:2px solid var(--gold);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;}
-.sr-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.3em;color:var(--muted);text-transform:uppercase;}
-.sr-date{font-family:'Cinzel Decorative',serif;font-size:24px;color:var(--gold-dark);font-weight:700;}
-.sr-year{font-family:'Dancing Script',cursive;font-size:18px;color:var(--gold);}
-#scratchCanvas{position:absolute;top:0;left:0;width:250px;height:112px;border-radius:14px;cursor:crosshair;touch-action:none;}
-.scratch-hint{font-size:11px;color:var(--muted);letter-spacing:.15em;margin-bottom:20px;animation:pulse 1.8s infinite;}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.gold-frame{border:2px solid var(--gold);border-radius:20px;padding:5px;margin:22px auto 0;width:260px;animation:fadeUp .9s .75s ease both;position:relative;}
+.gold-frame-inner{border:1px solid var(--gold-l);border-radius:16px;padding:18px;}
+.gc{position:absolute;width:14px;height:14px;border-color:var(--gold);border-style:solid;}
+.gc.tl{top:3px;left:3px;border-width:2px 0 0 2px;border-radius:4px 0 0 0;}
+.gc.tr{top:3px;right:3px;border-width:2px 2px 0 0;border-radius:0 4px 0 0;}
+.gc.bl{bottom:3px;left:3px;border-width:0 0 2px 2px;border-radius:0 0 0 4px;}
+.gc.br{bottom:3px;right:3px;border-width:0 2px 2px 0;border-radius:0 0 4px 0;}
+.scratch-wrap{position:relative;width:100%;}
+.scratch-reveal{width:100%;height:108px;background:linear-gradient(135deg,#fffbe8,#f5e8a8);border:2px solid var(--gold);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;}
+.sr-lbl{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.3em;color:var(--muted);}
+.sr-date{font-family:'Cinzel Decorative',serif;font-size:22px;color:var(--gold-d);font-weight:700;}
+.sr-yr{font-family:'Dancing Script',cursive;font-size:17px;color:var(--gold);}
+#scratchCanvas{position:absolute;top:0;left:0;width:100%;height:108px;border-radius:12px;cursor:crosshair;touch-action:none;}
+.scratch-hint{font-size:11px;color:var(--muted);letter-spacing:.15em;margin:10px 0 22px;animation:pulse 1.8s infinite;}
 
-.open-btn{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#fff8e0;border:none;padding:14px 42px;border-radius:50px;font-family:'Cinzel',serif;font-size:13px;letter-spacing:.2em;cursor:pointer;box-shadow:0 6px 24px rgba(139,101,32,.4);transition:all .3s;animation:fadeUp .8s 1.1s ease both;}
-.open-btn:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(139,101,32,.5);}
+.open-btn{
+  background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#fff8e0;
+  border:none;padding:15px 44px;border-radius:50px;
+  font-family:'Cinzel',serif;font-size:13px;letter-spacing:.2em;
+  cursor:pointer;box-shadow:0 6px 24px rgba(122,85,24,.45);
+  transition:all .3s;animation:fadeUp .9s 1.1s ease both;
+}
+.open-btn:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(122,85,24,.55);}
 
-/* ── FAMILY ── */
-.family-card{background:#fff;border-radius:28px;padding:38px 26px;max-width:380px;width:100%;border:1px solid var(--gold-light);box-shadow:0 8px 40px rgba(201,151,58,.12);position:relative;overflow:hidden;text-align:center;}
-.family-card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--gold-light),var(--gold),var(--gold-dark),var(--gold),var(--gold-light));}
+/* ═══════════ FAMILY ═══════════ */
+#page-family{background:linear-gradient(160deg,#fdf8f0,#faf0e0);padding:70px 20px 100px;}
+.family-card{background:#fff;border-radius:28px;padding:36px 26px;max-width:380px;width:100%;border:1px solid var(--gold-l);box-shadow:0 8px 40px rgba(201,151,58,.12);position:relative;overflow:hidden;text-align:center;}
+.family-card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--gold-l),var(--gold),var(--gold-d),var(--gold),var(--gold-l));}
 .ph{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.32em;color:var(--gold);margin-bottom:22px;text-transform:uppercase;}
-.family-name{font-family:'Cinzel Decorative',serif;font-size:40px;color:var(--gold-dark);line-height:1;}
+.family-name{font-family:'Cinzel Decorative',serif;font-size:38px;color:var(--gold-d);line-height:1;}
 .family-lineage{font-size:14px;color:var(--muted);margin:10px 0 4px;line-height:1.9;}
 .lb{color:var(--text);font-weight:700;}
 .rings-div{display:flex;align-items:center;gap:12px;margin:22px 0;}
-.rings-div::before,.rings-div::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold-light),transparent);}
+.rings-div::before,.rings-div::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold-l),transparent);}
 .blessing{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--muted);line-height:2;margin-top:18px;}
 
-/* ── EVENTS ── */
+/* ═══════════ EVENTS ═══════════ */
 #page-events{padding:70px 20px 100px;background:linear-gradient(160deg,#fdf8f0,#f5edf2);}
 .events-wrap{max-width:420px;width:100%;}
 .ph-ev{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px;text-align:center;text-transform:uppercase;}
-.day-tabs{display:flex;border-radius:50px;overflow:hidden;border:2px solid var(--gold-light);margin-bottom:20px;}
+.day-tabs{display:flex;border-radius:50px;overflow:hidden;border:2px solid var(--gold-l);margin-bottom:20px;}
 .dtab{flex:1;padding:12px 8px;border:none;background:transparent;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.08em;color:var(--muted);cursor:pointer;transition:all .3s;}
-.dtab.active{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#fff8e0;}
+.dtab.active{background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#fff8e0;}
 .elist{display:none;}
 .elist.active{display:block;animation:fadeUp .4s ease;}
-
 .ecard{border-radius:20px;margin-bottom:14px;cursor:pointer;overflow:hidden;border:2px solid transparent;transition:transform .25s,box-shadow .25s;position:relative;}
 .ecard:hover{transform:translateX(5px);}
 .ecard-front{display:flex;}
@@ -94,7 +170,7 @@ body{background:var(--cream);font-family:'Lato',sans-serif;color:var(--text);ove
 .ecard-badge{min-width:70px;height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;}
 .bt{font-family:'Cinzel',serif;font-size:18px;font-weight:600;line-height:1;}
 .ba{font-size:9px;letter-spacing:.1em;margin-top:2px;}
-.ecard-info{padding:14px 14px;display:flex;flex-direction:column;justify-content:center;flex:1;}
+.ecard-info{padding:14px;display:flex;flex-direction:column;justify-content:center;flex:1;}
 .en{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;line-height:1.2;}
 .es{font-size:12px;margin-top:3px;opacity:.75;}
 .fh{position:absolute;bottom:5px;right:10px;font-size:9px;opacity:.4;}
@@ -102,493 +178,740 @@ body{background:var(--cream);font-family:'Lato',sans-serif;color:var(--text);ove
 .bkt{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;margin-bottom:4px;}
 .bkb{font-size:12px;line-height:1.7;font-style:italic;}
 
-/* mehendi=green */
-.ecard.mehendi{background:linear-gradient(135deg,#e8f5e0,#d0ecc0);border-color:var(--mehendi-mid);}
-.ecard.mehendi .ecard-badge{background:var(--mehendi-mid);color:#fff;}
-.ecard.mehendi .en{color:var(--mehendi-dark);}
-.ecard.mehendi .es{color:var(--mehendi-mid);}
-.ecard.mehendi .fh{color:var(--mehendi-mid);}
+/* mehendi green */
+.ecard.mehendi{background:linear-gradient(135deg,#e8f5e0,#d0ecc0);border-color:var(--me-m);}
+.ecard.mehendi .ecard-badge{background:var(--me-m);color:#fff;}
+.ecard.mehendi .en{color:var(--me-d);}
+.ecard.mehendi .es{color:var(--me-m);}
 .ecard.mehendi .ecard-back{background:linear-gradient(135deg,#d0ecc0,#b8e0a0);}
-.ecard.mehendi .bkt{color:var(--mehendi-dark);}
-.ecard.mehendi .bkb{color:var(--mehendi-mid);}
+.ecard.mehendi .bkt{color:var(--me-d);}
+.ecard.mehendi .bkb{color:var(--me-m);}
+.ecard.mehendi .fh{color:var(--me-m);}
 
-/* mahera=yellow */
-.ecard.mahera{background:linear-gradient(135deg,#fffbe0,#f5f0b0);border-color:var(--mahera-mid);}
-.ecard.mahera .ecard-badge{background:var(--mahera-mid);color:#fff8e0;}
-.ecard.mahera .en{color:var(--mahera-dark);}
-.ecard.mahera .es{color:var(--mahera-mid);}
-.ecard.mahera .fh{color:var(--mahera-mid);}
-.ecard.mahera .ecard-back{background:linear-gradient(135deg,#f5f0b0,#e8e080);}
-.ecard.mahera .bkt{color:var(--mahera-dark);}
-.ecard.mahera .bkb{color:var(--mahera-dark);}
+/* mahera yellow */
+.ecard.mahera{background:linear-gradient(135deg,#fffbe0,#f5f0a8);border-color:var(--ma-m);}
+.ecard.mahera .ecard-badge{background:var(--ma-m);color:#fff8e0;}
+.ecard.mahera .en{color:var(--ma-d);}
+.ecard.mahera .es{color:var(--ma-m);}
+.ecard.mahera .ecard-back{background:linear-gradient(135deg,#f5f0a8,#e8e070);}
+.ecard.mahera .bkt{color:var(--ma-d);}
+.ecard.mahera .bkb{color:var(--ma-d);}
+.ecard.mahera .fh{color:var(--ma-m);}
 
-/* sangeet=disco */
-.ecard.sangeet{background:linear-gradient(135deg,#0a0a1a,#1a0a30);border-color:var(--sangeet-cyan);position:relative;overflow:hidden;}
-.ecard.sangeet::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,rgba(255,32,144,.2) 0%,transparent 55%),radial-gradient(circle at 80% 50%,rgba(0,255,238,.15) 0%,transparent 55%);animation:discoGlow 3s ease-in-out infinite alternate;}
-@keyframes discoGlow{0%{opacity:.5;}100%{opacity:1;}}
-.disco-orb{position:absolute;top:8px;right:12px;width:20px;height:20px;background:conic-gradient(#ff2090,#ffee00,#00ffee,#ff2090);border-radius:50%;animation:discoSpin 1.5s linear infinite;opacity:.9;}
-@keyframes discoSpin{to{transform:rotate(360deg);}}
-.ecard.sangeet .ecard-badge{background:rgba(255,32,144,.3);border-right:1px solid rgba(0,255,238,.3);}
-.ecard.sangeet .bt{color:var(--sangeet-cyan);text-shadow:0 0 8px var(--sangeet-cyan);}
-.ecard.sangeet .ba{color:rgba(255,255,255,.6);}
-.ecard.sangeet .en{color:var(--sangeet-cyan);text-shadow:0 0 6px var(--sangeet-cyan);font-size:18px;}
-.ecard.sangeet .es{color:rgba(0,255,238,.6);}
-.ecard.sangeet .fh{color:rgba(0,255,238,.4);}
-.ecard.sangeet .ecard-back{background:linear-gradient(135deg,#0a0a1a,#200a40);}
-.ecard.sangeet .bkt{color:var(--sangeet-yellow);text-shadow:0 0 8px var(--sangeet-yellow);}
-.ecard.sangeet .bkb{color:rgba(255,255,255,.7);}
+/* sangeet disco */
+.ecard.sangeet{background:#0a0018;border-color:#8800cc;position:relative;overflow:hidden;}
+.ecard.sangeet::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,32,144,.15),rgba(0,255,238,.1),rgba(255,238,0,.1));animation:discoPulse 1.8s ease-in-out infinite;}
+@keyframes discoPulse{0%,100%{opacity:.6}50%{opacity:1}}
+.ecard.sangeet .ecard-badge{background:linear-gradient(180deg,#ff2090,#8800cc);color:#fff;}
+.ecard.sangeet .en{color:var(--sg-c);}
+.ecard.sangeet .es{color:var(--sg-p);}
+.ecard.sangeet .ecard-info{background:transparent;}
+.ecard.sangeet .ecard-back{background:linear-gradient(135deg,#0d001a,#1a0030);}
+.ecard.sangeet .bkt{color:var(--sg-y);}
+.ecard.sangeet .bkb{color:var(--sg-c);}
+.ecard.sangeet .fh{color:var(--sg-p);}
+.disco-dot{position:absolute;width:6px;height:6px;border-radius:50%;animation:discoDot 1.4s ease-in-out infinite;}
+@keyframes discoDot{0%,100%{opacity:0}50%{opacity:1}}
 
-/* akshada=purple */
-.ecard.akshada{background:linear-gradient(135deg,#f0e8ff,#e0d0ff);border-color:var(--akshada-mid);}
-.ecard.akshada .ecard-badge{background:var(--akshada-mid);color:#fff;}
-.ecard.akshada .en{color:var(--akshada-dark);}
-.ecard.akshada .es{color:var(--akshada-mid);}
-.ecard.akshada .fh{color:var(--akshada-mid);}
-.ecard.akshada .ecard-back{background:linear-gradient(135deg,#e0d0ff,#d0b8ff);}
-.ecard.akshada .bkt{color:var(--akshada-dark);}
-.ecard.akshada .bkb{color:var(--akshada-mid);}
+/* akshada purple */
+.ecard.akshada{background:linear-gradient(135deg,#f0e8ff,#e0d0ff);border-color:var(--ak-m);}
+.ecard.akshada .ecard-badge{background:linear-gradient(180deg,var(--ak-m),var(--ak-d));color:#fff;}
+.ecard.akshada .en{color:var(--ak-d);}
+.ecard.akshada .es{color:var(--ak-m);}
+.ecard.akshada .ecard-back{background:linear-gradient(135deg,#e0d0ff,#c8b0f0);}
+.ecard.akshada .bkt{color:var(--ak-d);}
+.ecard.akshada .bkb{color:var(--ak-m);}
+.ecard.akshada .fh{color:var(--ak-m);}
 
-/* panigrahan=pink */
-.ecard.panigrahan{background:linear-gradient(135deg,#ffe8f5,#ffd0e8);border-color:var(--panigrahan-mid);}
-.ecard.panigrahan .ecard-badge{background:var(--panigrahan-mid);color:#fff;}
-.ecard.panigrahan .en{color:var(--panigrahan-dark);}
-.ecard.panigrahan .es{color:var(--panigrahan-mid);}
-.ecard.panigrahan .fh{color:var(--panigrahan-mid);}
+/* panigrahan pink */
+.ecard.panigrahan{background:linear-gradient(135deg,#ffe8f5,#ffd0e8);border-color:var(--pa-m);}
+.ecard.panigrahan .ecard-badge{background:linear-gradient(180deg,var(--pa-m),var(--pa-d));color:#fff;}
+.ecard.panigrahan .en{color:var(--pa-d);}
+.ecard.panigrahan .es{color:var(--pa-m);}
 .ecard.panigrahan .ecard-back{background:linear-gradient(135deg,#ffd0e8,#ffb8d8);}
-.ecard.panigrahan .bkt{color:var(--panigrahan-dark);}
-.ecard.panigrahan .bkb{color:var(--panigrahan-mid);}
+.ecard.panigrahan .bkt{color:var(--pa-d);}
+.ecard.panigrahan .bkb{color:var(--pa-m);}
+.ecard.panigrahan .fh{color:var(--pa-m);}
 
-/* ── VENUE ── */
-#page-venue{background:linear-gradient(170deg,#fdf3d0,#f0e8b8);padding:70px 20px 100px;text-align:center;}
-.venue-card{background:#fff;border-radius:28px;overflow:hidden;max-width:400px;width:100%;border:2px solid var(--gold-light);box-shadow:0 8px 40px rgba(201,151,58,.15);}
-.venue-header{background:linear-gradient(135deg,var(--gold),var(--gold-dark));padding:28px 24px 36px;color:#fff8e0;position:relative;}
-.venue-header::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:30px;background:#fff;clip-path:ellipse(55% 100% at 50% 100%);}
-.venue-ph{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.3em;opacity:.75;margin-bottom:10px;}
-.venue-name{font-family:'Cinzel Decorative',serif;font-size:24px;line-height:1.2;text-shadow:0 2px 10px rgba(0,0,0,.2);}
-.venue-city{font-family:'Dancing Script',cursive;font-size:18px;opacity:.85;margin-top:4px;}
-.venue-body{padding:22px 18px 20px;}
-.venue-dates{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--gold-dark);font-style:italic;margin-bottom:16px;line-height:1.9;}
-.map-frame{width:100%;border-radius:16px;overflow:hidden;height:210px;border:2px solid var(--gold-light);}
-.map-frame iframe{width:100%;height:100%;border:none;display:block;}
-.dir-btn{display:inline-block;margin:14px auto 0;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#fff8e0;border:none;padding:12px 30px;border-radius:50px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.15em;cursor:pointer;text-decoration:none;transition:all .3s;box-shadow:0 4px 16px rgba(139,101,32,.3);}
-.dir-btn:hover{transform:translateY(-2px);}
+/* ═══════════ COUNTDOWN ═══════════ */
+#page-countdown{
+  background:var(--deep);text-align:center;padding:70px 20px 100px;min-height:100vh;
+  position:relative;overflow:hidden;
+}
+#page-countdown::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(201,151,58,.18) 0%,transparent 70%);}
+.cd-label{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.35em;color:var(--gold-l);margin-bottom:28px;position:relative;z-index:1;text-transform:uppercase;}
+.cd-grid{display:flex;gap:12px;justify-content:center;margin-bottom:28px;position:relative;z-index:1;flex-wrap:wrap;}
+.cd-box{background:rgba(255,255,255,.06);border:1px solid rgba(201,151,58,.28);border-radius:16px;padding:18px 12px 12px;min-width:68px;}
+.cd-num{font-family:'Cinzel',serif;font-size:32px;color:var(--gold-l);line-height:1;font-weight:600;display:block;}
+.cd-unit{font-size:9px;color:rgba(255,255,255,.45);letter-spacing:.15em;margin-top:5px;display:block;text-transform:uppercase;}
+.fun-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:rgba(255,255,255,.55);max-width:300px;margin:0 auto 28px;line-height:1.8;position:relative;z-index:1;}
+.lm-section{background:rgba(255,255,255,.05);border:1px solid rgba(201,151,58,.18);border-radius:20px;padding:22px;max-width:320px;width:100%;margin:0 auto 28px;position:relative;z-index:1;}
+.lm-lbl{font-size:11px;color:var(--gold-l);letter-spacing:.2em;margin-bottom:14px;font-family:'Cinzel',serif;}
+.lm-bar{height:10px;background:rgba(255,255,255,.1);border-radius:10px;overflow:hidden;margin-bottom:6px;}
+.lm-fill{height:100%;border-radius:10px;background:linear-gradient(90deg,#c03080,var(--gold));width:0%;transition:width 2.4s cubic-bezier(.4,0,.2,1);}
+.lm-row{display:flex;justify-content:space-between;margin-bottom:14px;}
+.lm-row span{font-size:10px;color:rgba(255,255,255,.35);}
+.lm-pct{font-family:'Cinzel',serif;font-size:26px;color:var(--gold-l);}
+.lm-emoji{font-size:12px;color:rgba(255,255,255,.45);margin-top:5px;}
+.spin-btn{margin-top:14px;background:rgba(201,151,58,.15);border:1px solid rgba(201,151,58,.35);color:var(--gold-l);padding:10px 24px;border-radius:50px;cursor:pointer;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.1em;transition:all .2s;}
+.spin-btn:hover{background:rgba(201,151,58,.28);}
 
-/* ── COUNTDOWN ── */
-#page-countdown{background:#0d0800;padding:70px 20px 100px;text-align:center;position:relative;overflow:hidden;}
-#page-countdown::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 30%,rgba(201,151,58,.18) 0%,transparent 70%),radial-gradient(ellipse 50% 30% at 20% 80%,rgba(201,151,58,.08) 0%,transparent 70%);}
-.cd-label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.4em;color:var(--gold-light);margin-bottom:28px;position:relative;z-index:1;}
-.cd-grid{display:flex;gap:12px;justify-content:center;margin-bottom:32px;position:relative;z-index:1;}
-.cd-box{background:rgba(255,255,255,.05);border:1px solid rgba(201,151,58,.35);border-radius:18px;padding:18px 14px 12px;min-width:66px;}
-.cd-num{font-family:'Cinzel Decorative',serif;font-size:28px;color:var(--gold-light);line-height:1;display:block;text-shadow:0 0 20px rgba(201,151,58,.4);}
-.cd-unit{font-size:8px;letter-spacing:.15em;color:rgba(255,255,255,.4);margin-top:6px;display:block;}
-.fun-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:rgba(255,255,255,.55);max-width:280px;margin:0 auto 28px;line-height:1.9;position:relative;z-index:1;}
-.love-meter{background:rgba(255,255,255,.04);border:1px solid rgba(201,151,58,.25);border-radius:22px;padding:22px;max-width:300px;width:100%;margin:0 auto 24px;position:relative;z-index:1;text-align:center;}
-.lm-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.22em;color:var(--gold-light);margin-bottom:14px;}
-.lm-track{height:10px;background:rgba(255,255,255,.1);border-radius:10px;overflow:hidden;margin-bottom:8px;}
-.lm-fill{height:100%;border-radius:10px;background:linear-gradient(90deg,#c9973a,#f0d060,#c9973a);width:0%;transition:width 2.4s cubic-bezier(.4,0,.2,1);}
-.lm-pct{font-family:'Cinzel Decorative',serif;font-size:26px;color:var(--gold-light);text-shadow:0 0 16px rgba(201,151,58,.5);}
-.lm-emoji{font-size:11px;color:rgba(255,255,255,.5);margin-top:6px;}
-.lm-btn{margin-top:12px;background:rgba(201,151,58,.15);border:1px solid rgba(201,151,58,.4);color:var(--gold-light);padding:9px 22px;border-radius:50px;cursor:pointer;font-family:'Cinzel',serif;font-size:9px;letter-spacing:.12em;transition:all .2s;}
-.lm-btn:hover{background:rgba(201,151,58,.25);}
+/* ═══════════ VENUE ═══════════ */
+#page-venue{background:linear-gradient(160deg,#fdf8f0,#f5edf2);padding:70px 20px 100px;text-align:center;}
+.venue-card{background:#fff;border-radius:24px;padding:30px 22px;max-width:420px;width:100%;border:1px solid var(--gold-l);box-shadow:0 6px 32px rgba(201,151,58,.1);overflow:hidden;position:relative;}
+.venue-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold-l),var(--gold),var(--gold-d),var(--gold),var(--gold-l));}
+.venue-name{font-family:'Cinzel Decorative',serif;font-size:24px;color:var(--gold-d);margin-bottom:4px;}
+.venue-sub{font-size:13px;color:var(--muted);margin-bottom:20px;letter-spacing:.05em;}
+.map-wrap{width:100%;border-radius:16px;overflow:hidden;border:2px solid var(--gold-l);margin-bottom:16px;}
+.map-wrap iframe{width:100%;height:220px;display:block;border:0;}
+.venue-address{font-size:13px;color:var(--muted);line-height:1.8;}
+.directions-btn{
+  display:inline-block;margin-top:14px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#fff8e0;
+  border:none;padding:12px 32px;border-radius:50px;
+  font-family:'Cinzel',serif;font-size:11px;letter-spacing:.15em;
+  cursor:pointer;text-decoration:none;
+  box-shadow:0 4px 18px rgba(122,85,24,.35);
+  transition:all .3s;
+}
+.directions-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(122,85,24,.45);}
 
-/* ── RSVP ── */
-#page-rsvp{background:linear-gradient(170deg,#fdf8f0,#f5e8d0);padding:70px 20px 100px;}
-.rsvp-card{background:#fff;border-radius:28px;padding:36px 24px;max-width:400px;width:100%;border:2px solid var(--gold-light);box-shadow:0 8px 40px rgba(201,151,58,.12);position:relative;overflow:hidden;text-align:center;}
-.rsvp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--gold-light),var(--gold),var(--gold-dark),var(--gold),var(--gold-light));}
-.rph{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.32em;color:var(--gold);margin-bottom:6px;text-transform:uppercase;}
-.rt{font-family:'Cinzel Decorative',serif;font-size:28px;color:var(--gold-dark);margin-bottom:22px;text-shadow:0 2px 8px rgba(201,151,58,.2);}
-.field{margin-bottom:14px;text-align:left;}
-.field label{display:block;font-size:10px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;margin-bottom:5px;}
-.field input,.field select,.field textarea{width:100%;padding:12px 14px;border:1.5px solid var(--gold-light);border-radius:12px;font-family:'Lato',sans-serif;font-size:14px;color:var(--text);background:#fffdf5;outline:none;transition:border-color .2s;resize:none;}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold);}
+/* ═══════════ RSVP ═══════════ */
+#page-rsvp{background:linear-gradient(170deg,#fdf5d0,#fdf8f0);padding:70px 20px 100px;}
+.rsvp-card{background:#fff;border-radius:24px;padding:34px 24px;max-width:380px;width:100%;box-shadow:0 8px 40px rgba(201,151,58,.12);border:1px solid var(--gold-l);position:relative;overflow:hidden;text-align:center;}
+.rsvp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold-l),var(--gold),var(--gold-d),var(--gold),var(--gold-l));}
+.rf{margin-bottom:16px;text-align:left;}
+.rf label{display:block;font-size:10px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-bottom:6px;font-family:'Cinzel',serif;}
+.rf input,.rf select,.rf textarea{width:100%;padding:12px 14px;border:1.5px solid var(--gold-l);border-radius:12px;font-family:'Lato',sans-serif;font-size:14px;color:var(--text);background:#fffdf5;outline:none;transition:border-color .2s;resize:none;}
+.rf input:focus,.rf select:focus,.rf textarea:focus{border-color:var(--gold);}
 .attend-row{display:flex;gap:10px;margin-bottom:16px;}
-.aopt{flex:1;padding:12px 6px;border:2px solid var(--gold-light);border-radius:12px;background:transparent;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.06em;cursor:pointer;transition:all .3s;color:var(--muted);}
-.aopt.sel{background:linear-gradient(135deg,var(--gold),var(--gold-dark));border-color:var(--gold-dark);color:#fff8e0;}
-.events-chk{display:flex;flex-direction:column;gap:8px;margin-bottom:18px;}
-.chi{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1.5px solid var(--gold-light);border-radius:10px;cursor:pointer;transition:all .2s;font-size:13px;color:var(--text);background:#fffdf5;text-align:left;}
-.chi input{accent-color:var(--gold);width:15px;height:15px;flex-shrink:0;}
-.chi:hover{border-color:var(--gold);}
-.submit-btn{width:100%;padding:15px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#fff8e0;border:none;border-radius:14px;font-family:'Cinzel',serif;font-size:13px;letter-spacing:.18em;cursor:pointer;box-shadow:0 6px 24px rgba(139,101,32,.3);transition:all .3s;}
-.submit-btn:hover{transform:translateY(-2px);}
-.rsvp-done{display:none;flex-direction:column;align-items:center;gap:14px;padding:10px 0;}
-.done-icon{font-size:52px;animation:bounceIn .6s ease;}
-@keyframes bounceIn{0%{transform:scale(0)}60%{transform:scale(1.25)}100%{transform:scale(1)}}
-.done-title{font-family:'Cinzel Decorative',serif;font-size:20px;color:var(--gold-dark);}
-.done-msg{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--muted);line-height:1.9;text-align:center;}
-.contact-box{margin-top:12px;padding:16px 18px;background:linear-gradient(135deg,#fff9e8,#f5f0d8);border-radius:16px;border:1px solid var(--gold-light);width:100%;font-size:13px;color:var(--text);line-height:2.3;text-align:center;}
+.aopt{flex:1;padding:12px 6px;border:2px solid var(--gold-l);border-radius:12px;background:transparent;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.08em;cursor:pointer;transition:all .3s;color:var(--muted);}
+.aopt.sel{background:linear-gradient(135deg,var(--gold),var(--gold-d));border-color:var(--gold-d);color:#fff8e0;}
+#eventsSec{margin-bottom:16px;}
+.ev-chk-lbl{font-size:10px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;margin-bottom:10px;font-family:'Cinzel',serif;text-align:left;display:block;}
+.ev-checks{display:flex;flex-direction:column;gap:8px;}
+.ev-check{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid var(--gold-l);border-radius:10px;cursor:pointer;font-size:13px;color:var(--text);background:#fffdf5;transition:border-color .2s;text-align:left;}
+.ev-check input{width:16px;height:16px;accent-color:var(--gold);flex-shrink:0;}
+.ev-check:hover{border-color:var(--gold);}
+.submit-btn{width:100%;padding:15px;background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#fff8e0;border:none;border-radius:14px;font-family:'Cinzel',serif;font-size:13px;letter-spacing:.18em;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px rgba(122,85,24,.32);}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(122,85,24,.42);}
+#rsvpDone{display:none;flex-direction:column;align-items:center;gap:14px;padding:16px 0;}
+.done-icon{font-size:52px;animation:bounce .6s ease;}
+@keyframes bounce{0%{transform:scale(0)}60%{transform:scale(1.2)}100%{transform:scale(1)}}
+.done-msg{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--muted);font-style:italic;line-height:1.8;text-align:center;}
+.contact-box{margin-top:14px;padding:16px 20px;background:#fffdf5;border-radius:16px;width:100%;border:1px solid var(--gold-l);}
+.contact-box .ct{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-bottom:10px;font-family:'Cinzel',serif;text-transform:uppercase;}
+.contact-box p{font-size:13px;color:var(--text);line-height:2.1;}
 
-/* ── BOTTOM NAV ── */
-.bnav{position:fixed;bottom:0;width:100%;max-width:480px;left:50%;transform:translateX(-50%);background:rgba(253,248,240,.96);backdrop-filter:blur(12px);border-top:1px solid var(--gold-light);display:flex;z-index:100;padding:6px 0 10px;}
-.bni{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:5px 2px;border:none;background:transparent;transition:all .2s;}
-.bni-icon{font-size:17px;color:var(--muted);transition:all .2s;}
-.bni-label{font-size:8px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;font-family:'Cinzel',serif;}
-.bni.active .bni-icon{color:var(--gold-dark);transform:scale(1.2);}
-.bni.active .bni-label{color:var(--gold-dark);}
+/* ═══════════ NAV ═══════════ */
+#bottomNav{
+  position:fixed;bottom:0;width:100%;max-width:480px;left:50%;transform:translateX(-50%);
+  background:rgba(253,248,240,.96);backdrop-filter:blur(10px);
+  border-top:1px solid var(--gold-l);display:flex;z-index:100;
+  padding:7px 0 11px;
+}
+.ni{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;border:none;background:transparent;padding:5px 2px;border-radius:8px;transition:all .2s;}
+.ni .ic{font-size:19px;color:var(--muted);transition:all .2s;}
+.ni .nl{font-size:8px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;}
+.ni.active .ic{color:var(--gold-d);transform:scale(1.18);}
+.ni.active .nl{color:var(--gold-d);}
 
-/* ── UTILS ── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
-.gold-rule{display:flex;align-items:center;gap:10px;margin:16px 0;}
-.gold-rule::before,.gold-rule::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold-light),transparent);}
-.gr-dot{width:5px;height:5px;background:var(--gold);border-radius:50%;}
-.cfp{position:fixed;width:9px;height:9px;border-radius:2px;opacity:0;pointer-events:none;z-index:9998;}
-@keyframes cFall{0%{opacity:1;transform:translateY(0) rotate(0deg);}100%{opacity:0;transform:translateY(100vh) rotate(720deg);}}
+/* CONFETTI */
+.cfp{position:fixed;pointer-events:none;z-index:99998;border-radius:2px;}
+@keyframes cFall{0%{opacity:1;transform:translateY(0) rotate(0)}100%{opacity:0;transform:translateY(100vh) rotate(720deg)}}
 </style>
 </head>
 <body>
+
+<!-- ═══════════════════════════════════
+     WAX SEAL SCREEN
+═══════════════════════════════════ -->
+<div id="sealScreen">
+  <div class="dust"></div>
+
+  <div class="seal-pre">A Wedding Invitation</div>
+
+  <div class="seal-wrap" id="sealWrap" onclick="breakSeal()">
+    <div class="seal-body" id="sealBody">
+      <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="waxG" cx="42%" cy="38%" r="62%">
+            <stop offset="0%" stop-color="#c03820"/>
+            <stop offset="45%" stop-color="#8a2010"/>
+            <stop offset="100%" stop-color="#5a1008"/>
+          </radialGradient>
+          <radialGradient id="waxShine" cx="35%" cy="30%" r="45%">
+            <stop offset="0%" stop-color="rgba(255,200,160,.55)"/>
+            <stop offset="100%" stop-color="rgba(255,200,160,0)"/>
+          </radialGradient>
+          <filter id="emboss">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+            <feSpecularLighting in="blur" surfaceScale="4" specularConstant="1.4" specularExponent="12" result="spec" lighting-color="#fff">
+              <fePointLight x="80" y="60" z="120"/>
+            </feSpecularLighting>
+            <feComposite in="spec" in2="SourceAlpha" operator="in" result="specClipped"/>
+            <feBlend in="SourceGraphic" in2="specClipped" mode="screen"/>
+          </filter>
+          <filter id="deepEmboss">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="1.5" result="b"/>
+            <feOffset dx="1" dy="1" in="b" result="shifted"/>
+            <feComposite in="SourceGraphic" in2="shifted" operator="over"/>
+          </filter>
+        </defs>
+
+        <!-- Outer scalloped seal shape -->
+        <g filter="url(#emboss)">
+          <!-- Main circle -->
+          <circle cx="120" cy="120" r="108" fill="url(#waxG)"/>
+          <!-- Scallop bumps around edge -->
+          <circle cx="120" cy="14" r="11" fill="url(#waxG)"/>
+          <circle cx="174" cy="29" r="11" fill="url(#waxG)"/>
+          <circle cx="213" cy="68" r="11" fill="url(#waxG)"/>
+          <circle cx="226" cy="120" r="11" fill="url(#waxG)"/>
+          <circle cx="213" cy="172" r="11" fill="url(#waxG)"/>
+          <circle cx="174" cy="211" r="11" fill="url(#waxG)"/>
+          <circle cx="120" cy="226" r="11" fill="url(#waxG)"/>
+          <circle cx="66" cy="211" r="11" fill="url(#waxG)"/>
+          <circle cx="27" cy="172" r="11" fill="url(#waxG)"/>
+          <circle cx="14" cy="120" r="11" fill="url(#waxG)"/>
+          <circle cx="27" cy="68" r="11" fill="url(#waxG)"/>
+          <circle cx="66" cy="29" r="11" fill="url(#waxG)"/>
+        </g>
+
+        <!-- Shine overlay -->
+        <circle cx="120" cy="120" r="108" fill="url(#waxShine)"/>
+
+        <!-- Outer ring border -->
+        <circle cx="120" cy="120" r="98" fill="none" stroke="rgba(255,200,160,.35)" stroke-width="1.5"/>
+        <circle cx="120" cy="120" r="90" fill="none" stroke="rgba(255,200,160,.2)" stroke-width="1"/>
+
+        <!-- Decorative inner ring with dots -->
+        <circle cx="120" cy="120" r="84" fill="none" stroke="rgba(255,200,160,.28)" stroke-width="1" stroke-dasharray="4 5"/>
+
+        <!-- Floral wreath ring -->
+        <g opacity=".55">
+          <text x="120" y="46" text-anchor="middle" font-size="10" fill="rgba(255,220,180,.7)" font-family="serif">❧</text>
+          <text x="194" y="74" text-anchor="middle" font-size="10" fill="rgba(255,220,180,.7)" font-family="serif" transform="rotate(60,194,74)">❧</text>
+          <text x="194" y="170" text-anchor="middle" font-size="10" fill="rgba(255,220,180,.7)" font-family="serif" transform="rotate(120,194,170)">❧</text>
+          <text x="120" y="197" text-anchor="middle" font-size="10" fill="rgba(255,220,180,.7)" font-family="serif" transform="rotate(180,120,197)">❧</text>
+          <text x="46" y="170" text-anchor="middle" font-size="10" fill="rgba(255,220,180,.7)" font-family="serif" transform="rotate(240,46,170)">❧</text>
+          <text x="46" y="74" text-anchor="middle" font-size="10" fill="rgba(255,220,180,.7)" font-family="serif" transform="rotate(300,46,74)">❧</text>
+        </g>
+
+        <!-- RS monogram — embossed effect -->
+        <g filter="url(#deepEmboss)">
+          <!-- R -->
+          <text x="88" y="138" font-family="'Cinzel Decorative', Cinzel, serif" font-size="54" font-weight="700"
+            fill="rgba(255,220,170,.92)" text-anchor="middle" letter-spacing="-2">R</text>
+          <!-- S -->
+          <text x="155" y="138" font-family="'Cinzel Decorative', Cinzel, serif" font-size="54" font-weight="700"
+            fill="rgba(255,220,170,.92)" text-anchor="middle" letter-spacing="-2">S</text>
+          <!-- small ampersand -->
+          <text x="121" y="130" font-family="'Dancing Script', cursive" font-size="22"
+            fill="rgba(255,210,150,.7)" text-anchor="middle">&amp;</text>
+        </g>
+
+        <!-- Bottom text arc -->
+        <path id="arcBottom" d="M 38,155 A 90,90 0 0,0 202,155" fill="none"/>
+        <text font-family="Cinzel, serif" font-size="9" fill="rgba(255,210,150,.65)" letter-spacing="3">
+          <textPath href="#arcBottom" startOffset="10%">RITIKA  ✦  SANKET  ✦  2026</textPath>
+        </text>
+
+        <!-- Top text arc -->
+        <path id="arcTop" d="M 42,108 A 86,86 0 0,1 198,108" fill="none"/>
+        <text font-family="Cinzel, serif" font-size="8" fill="rgba(255,210,150,.5)" letter-spacing="2.5">
+          <textPath href="#arcTop" startOffset="12%">11 &amp; 12  DECEMBER</textPath>
+        </text>
+
+        <!-- Centre horizontal rule -->
+        <line x1="60" y1="148" x2="180" y2="148" stroke="rgba(255,200,150,.3)" stroke-width=".8"/>
+      </svg>
+
+      <!-- Crack lines SVG overlay -->
+      <svg class="seal-crack" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+        <line x1="120" y1="0" x2="80" y2="120" stroke="rgba(255,220,180,.9)" stroke-width="1.5"/>
+        <line x1="120" y1="0" x2="160" y2="130" stroke="rgba(255,220,180,.7)" stroke-width="1"/>
+        <line x1="0" y1="120" x2="120" y2="100" stroke="rgba(255,220,180,.7)" stroke-width="1"/>
+        <line x1="240" y1="120" x2="110" y2="105" stroke="rgba(255,220,180,.6)" stroke-width="1"/>
+        <line x1="80" y1="240" x2="115" y2="115" stroke="rgba(255,220,180,.8)" stroke-width="1.2"/>
+        <line x1="180" y1="240" x2="125" y2="110" stroke="rgba(255,220,180,.6)" stroke-width="1"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="seal-hint" id="sealHint">✦ Press to break the seal ✦</div>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     PETAL LAYER
+═══════════════════════════════════ -->
 <div id="petalLayer"></div>
+
+
+<!-- ═══════════════════════════════════
+     MAIN APP
+═══════════════════════════════════ -->
+<div id="app">
 <div class="page-wrapper">
 
-<!-- PAGE 1 · COVER -->
-<div id="page-cover" class="section active">
-  <div class="ganesh-block" style="margin-top:48px;text-align:center;">
-    <svg class="om-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <defs><radialGradient id="gg" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#f0d060"/><stop offset="100%" stop-color="#8b6520"/></radialGradient></defs>
-      <circle cx="50" cy="50" r="46" fill="none" stroke="url(#gg)" stroke-width="1.5" opacity=".5"/>
-      <circle cx="50" cy="50" r="40" fill="none" stroke="url(#gg)" stroke-width=".7" opacity=".3"/>
-      <text x="50" y="63" text-anchor="middle" font-size="44" fill="url(#gg)" font-family="serif">ॐ</text>
-      <path d="M20 76 Q50 90 80 76" stroke="url(#gg)" stroke-width="1" fill="none" opacity=".6"/>
-      <circle cx="26" cy="30" r="4" fill="url(#gg)" opacity=".5"/>
-      <circle cx="74" cy="30" r="4" fill="url(#gg)" opacity=".5"/>
-    </svg>
-    <div class="stotra">
-      ॥ श्री गणेशाय नमः ॥<br>
-      वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br>
-      निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥
-    </div>
-  </div>
-
-  <div style="height:16px;"></div>
-  <div class="save-label">— Save the Date —</div>
-  <div class="bride-name">Ritika</div>
-  <span class="weds-word">weds</span>
-  <div class="groom-name">Sanket</div>
-
-  <div class="gold-frame">
-    <div class="gc tl"></div><div class="gc tr"></div><div class="gc bl"></div><div class="gc br"></div>
-    <div class="gold-frame-inner">
-      <div class="scratch-wrap">
-        <div class="scratch-reveal">
-          <span class="sr-label">The most awaited dates</span>
-          <span class="sr-date">11 &amp; 12 DEC</span>
-          <span class="sr-year">Two thousand twenty six</span>
-        </div>
-        <canvas id="scratchCanvas" width="250" height="112"></canvas>
-      </div>
-      <div class="scratch-hint" id="scratchHint">✦ Scratch to reveal the date ✦</div>
-    </div>
-  </div>
-
-  <div class="gold-rule" style="width:220px;margin:14px auto;">
-    <div class="gr-dot"></div><div class="gr-dot"></div><div class="gr-dot"></div>
-  </div>
-
-  <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--muted);text-align:center;margin-bottom:26px;line-height:2;animation:fadeUp .8s 1s ease both;">
-    Sikchi Resort, Amravati<br>
-    11 Dec · Mehendi · Mahera · Sangeet<br>
-    12 Dec · Akshada · Varmala · Panigrahan
-  </div>
-
-  <button class="open-btn" onclick="goToPage('page-family')">Open Invitation ✦</button>
-  <div style="height:24px;"></div>
-</div>
-
-
-<!-- PAGE 2 · FAMILY -->
-<div id="page-family" class="section" style="padding:70px 20px 100px;background:linear-gradient(170deg,#fdf8f0,#f5ede0);">
-  <div class="family-card">
-    <div class="ph">✦ With the blessings of the Almighty &amp; our families ✦</div>
-    <div class="family-name">Ritika</div>
-    <div class="family-lineage">Beloved daughter of<br><span class="lb">Shri Mohankumar</span> &amp; <span class="lb">Smt. Savita Tapadia</span></div>
-    <div class="rings-div"><span style="font-size:24px;">💍</span></div>
-    <div class="family-name">Sanket</div>
-    <div class="family-lineage">Beloved son of<br><span class="lb">Shri Prashant</span> &amp; <span class="lb">Smt. Shilpa Jethlia</span></div>
-    <div class="gold-rule"><div class="gr-dot"></div><div class="gr-dot"></div><div class="gr-dot"></div></div>
-    <div class="blessing">"पवित्र बंधन है ये सात जन्मों का,<br>सात फेरों के होंगे सात वचन।<br>आपके आशीष भरे शुभागमन से,<br>खिलेगा नव–दाम्पत्य जीवन।"</div>
-  </div>
-</div>
-
-
-<!-- PAGE 3 · EVENTS -->
-<div id="page-events" class="section">
-  <div class="events-wrap">
-    <div class="ph-ev">✦ Celebrations ✦</div>
-    <div class="day-tabs">
-      <button class="dtab active" onclick="switchDay('d1',this)">Fri · 11 December</button>
-      <button class="dtab"        onclick="switchDay('d2',this)">Sat · 12 December</button>
-    </div>
-
-    <div class="elist active" id="d1">
-      <!-- MEHENDI -->
-      <div class="ecard mehendi" onclick="flipCard(this)">
-        <div class="ecard-front">
-          <div class="ecard-badge"><span class="bt">12</span><span class="ba">NOON</span></div>
-          <div class="ecard-info">
-            <div class="en">🌿 Mehendi Carnival</div>
-            <div class="es">Henna, colours &amp; joy · Sikchi Resort</div>
-          </div>
-        </div>
-        <div class="ecard-back">
-          <div class="bke">🌿</div>
-          <div class="bkt">Where fingers tell love stories in henna</div>
-          <div class="bkb">Come drenched in floral ethnic colour! Let the mehendi artist paint your story. No plain clothes allowed!</div>
-        </div>
-        <span class="fh">tap to flip ↩</span>
-      </div>
-      <!-- MAHERA -->
-      <div class="ecard mahera" onclick="flipCard(this)">
-        <div class="ecard-front">
-          <div class="ecard-badge"><span class="bt">4</span><span class="ba">PM</span></div>
-          <div class="ecard-info">
-            <div class="en">☀️ Mahera</div>
-            <div class="es">Maternal family celebration · Sikchi Resort</div>
-          </div>
-        </div>
-        <div class="ecard-back">
-          <div class="bke">🌻</div>
-          <div class="bkt">Mama's side brings the biggest smiles</div>
-          <div class="bkb">A sun-bright celebration of the bride's maternal family. Wear yellow — be the sunshine Ritika deserves on her special day!</div>
-        </div>
-        <span class="fh">tap to flip ↩</span>
-      </div>
-      <!-- SANGEET -->
-      <div class="ecard sangeet" onclick="flipCard(this)">
-        <div class="disco-orb"></div>
-        <div class="ecard-front">
-          <div class="ecard-badge"><span class="bt">7</span><span class="ba">PM</span></div>
-          <div class="ecard-info">
-            <div class="en">🎶 Sangeet Night</div>
-            <div class="es" style="color:rgba(0,255,238,.55);">Disco · Dance · Dhamaal · Sikchi Resort</div>
-          </div>
-        </div>
-        <div class="ecard-back">
-          <div class="bke">🪩</div>
-          <div class="bkt">The night the dance floor becomes sacred</div>
-          <div class="bkb">Sequins. Moves. Full chaos. You WILL be pulled onto the floor — no excuses! Dress to absolutely dazzle!</div>
-        </div>
-        <span class="fh">tap to flip ↩</span>
+  <!-- ── PAGE 1: COVER ── -->
+  <div id="page-cover" class="section active" style="justify-content:flex-start;">
+    <div class="ganesh-block">
+      <svg class="om-svg" width="68" height="68" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="46" fill="none" stroke="var(--gold-l)" stroke-width="1.5" stroke-dasharray="6 4"/>
+        <circle cx="50" cy="50" r="38" fill="rgba(201,151,58,.08)"/>
+        <text x="50" y="62" text-anchor="middle" font-size="42" fill="var(--gold-d)" font-family="serif">ॐ</text>
+        <path d="M30 72 Q50 86 70 72" stroke="var(--gold)" stroke-width="1.5" fill="none"/>
+        <path d="M42 28 Q50 20 58 28" stroke="var(--gold)" stroke-width="1.5" fill="none"/>
+        <line x1="50" y1="20" x2="50" y2="16" stroke="var(--gold)" stroke-width="1.5"/>
+        <circle cx="50" cy="13" r="2.5" fill="var(--gold)"/>
+      </svg>
+      <div class="stotra">
+        ॥ श्री गणेशाय नमः ॥<br>
+        वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br>
+        निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
       </div>
     </div>
 
-    <div class="elist" id="d2">
-      <!-- AKSHADA -->
-      <div class="ecard akshada" onclick="flipCard(this)">
-        <div class="ecard-front">
-          <div class="ecard-badge"><span class="bt">12</span><span class="ba">NOON</span></div>
-          <div class="ecard-info">
-            <div class="en">💜 Akshada &amp; Varmala</div>
-            <div class="es">Blessings &amp; garland ceremony · Sikchi Resort</div>
+    <div class="save-label">SAVE THE DATE</div>
+    <div class="bride-name">Ritika</div>
+    <span class="weds-word">weds</span>
+    <div class="groom-name">Sanket</div>
+
+    <div class="gold-frame">
+      <div class="gc tl"></div><div class="gc tr"></div>
+      <div class="gc bl"></div><div class="gc br"></div>
+      <div class="gold-frame-inner">
+        <div class="scratch-wrap">
+          <div class="scratch-reveal">
+            <span class="sr-lbl">save these dates</span>
+            <span class="sr-date">11 &amp; 12 DEC</span>
+            <span class="sr-yr">2026</span>
           </div>
+          <canvas id="scratchCanvas" width="500" height="108"></canvas>
         </div>
-        <div class="ecard-back">
-          <div class="bke">💐</div>
-          <div class="bkt">Two worlds choose each other forever</div>
-          <div class="bkb">The moment the garlands fall, two families become one. Bring flowers, blessings and very happy tears!</div>
-        </div>
-        <span class="fh">tap to flip ↩</span>
       </div>
-      <!-- PANIGRAHAN -->
-      <div class="ecard panigrahan" onclick="flipCard(this)">
-        <div class="ecard-front">
-          <div class="ecard-badge"><span class="bt">3</span><span class="ba">PM</span></div>
-          <div class="ecard-info">
-            <div class="en">🔥 Panigrahan Sanskar</div>
-            <div class="es">The Seven Sacred Vows · Sikchi Resort</div>
-          </div>
-        </div>
-        <div class="ecard-back">
-          <div class="bke">🪔</div>
-          <div class="bkt">सात फेरे · सात वचन · एक जीवन</div>
-          <div class="bkb">The sacred fire witnesses as Ritika &amp; Sanket walk seven circles into forever. The holiest, most beautiful moment of the weekend.</div>
-        </div>
-        <span class="fh">tap to flip ↩</span>
+    </div>
+    <div class="scratch-hint" id="scratchHint">✦ Scratch above to reveal ✦</div>
+
+    <button class="open-btn" onclick="goTo('page-family')">Open Invitation ✦</button>
+  </div>
+
+
+  <!-- ── PAGE 2: FAMILY ── -->
+  <div id="page-family" class="section" style="padding:70px 20px 100px;">
+    <div class="family-card">
+      <div class="ph">✦ With the blessings of ✦</div>
+      <div class="family-name">Ritika</div>
+      <div class="family-lineage">Beloved daughter of<br><span class="lb">Shri Mohankumar</span> &amp; <span class="lb">Savita Tapadia</span></div>
+      <div class="rings-div"><span style="font-size:22px">💍</span></div>
+      <div class="family-name">Sanket</div>
+      <div class="family-lineage">Beloved son of<br><span class="lb">Shri Prashant</span> &amp; <span class="lb">Shilpa Jethlia</span></div>
+      <div class="rings-div" style="margin-top:22px;"><div style="height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--gold-l),transparent);"></div></div>
+      <div class="blessing">
+        "पवित्र बंधन है ये सात जन्मों का,<br>
+        सात फेरों के होंगे सात वचन।<br>
+        आपके आशीष भरे शुभागमन से,<br>
+        खिलेगा नव–दाम्पत्य जीवन।"
       </div>
     </div>
   </div>
-</div>
 
 
-<!-- PAGE 4 · VENUE -->
-<div id="page-venue" class="section">
-  <div class="venue-card">
-    <div class="venue-header">
-      <div class="venue-ph">✦ Venue ✦</div>
+  <!-- ── PAGE 3: EVENTS ── -->
+  <div id="page-events" class="section" style="padding:70px 20px 100px;align-items:center;">
+    <div class="events-wrap">
+      <div class="ph-ev">✦ Celebrations ✦</div>
+      <div class="day-tabs">
+        <button class="dtab active" onclick="switchDay('day1',this)">🌸 Fri · 11 Dec</button>
+        <button class="dtab" onclick="switchDay('day2',this)">🔥 Sat · 12 Dec</button>
+      </div>
+
+      <div class="elist active" id="day1">
+
+        <div class="ecard mehendi" onclick="flipCard(this)">
+          <div class="ecard-front">
+            <div class="ecard-badge"><span class="bt">12</span><span class="ba">NOON</span></div>
+            <div class="ecard-info">
+              <div class="en">Mehendi Carnival</div>
+              <div class="es">🌿 Henna · Colours · Laughter</div>
+            </div>
+          </div>
+          <div class="ecard-back">
+            <div class="bke">🌸</div>
+            <div class="bkt">Where fingers tell love stories in henna</div>
+            <div class="bkb">Dress in your brightest ethnic!<br>Come ready to get your hands painted.</div>
+          </div>
+          <span class="fh">tap to flip ↩</span>
+        </div>
+
+        <div class="ecard mahera" onclick="flipCard(this)">
+          <div class="ecard-front">
+            <div class="ecard-badge"><span class="bt">4</span><span class="ba">PM</span></div>
+            <div class="ecard-info">
+              <div class="en">Mahera</div>
+              <div class="es">💛 Maternal family celebration</div>
+            </div>
+          </div>
+          <div class="ecard-back">
+            <div class="bke">🪁</div>
+            <div class="bkt">Mama's side brings the biggest smiles</div>
+            <div class="bkb">A cherished tradition of love, gifts and joy — the warmth of family is unmatched.</div>
+          </div>
+          <span class="fh">tap to flip ↩</span>
+        </div>
+
+        <div class="ecard sangeet" onclick="flipCard(this)">
+          <div class="ecard-front">
+            <div class="ecard-badge"><span class="bt" style="color:var(--sg-y)">7</span><span class="ba" style="color:var(--sg-c)">PM</span></div>
+            <div class="ecard-info">
+              <div class="en">Sangeet Night</div>
+              <div class="es">🎶 Dance · Music · Disco · Fire</div>
+            </div>
+          </div>
+          <div class="ecard-back" style="background:linear-gradient(135deg,#0d001a,#1a0030);">
+            <div class="bke">🪩</div>
+            <div class="bkt" style="color:var(--sg-y)">The night the dance floor becomes sacred</div>
+            <div class="bkb" style="color:var(--sg-c)">Wear your dancing shoes — excuses NOT accepted.<br>The disco ball waits for no one!</div>
+          </div>
+          <span class="fh" style="color:var(--sg-p)">tap to flip ↩</span>
+          <!-- Disco dots -->
+          <div class="disco-dot" style="background:var(--sg-c);top:12px;right:18px;animation-delay:0s;"></div>
+          <div class="disco-dot" style="background:var(--sg-y);top:8px;right:36px;animation-delay:.4s;"></div>
+          <div class="disco-dot" style="background:var(--sg-p);top:16px;right:52px;animation-delay:.8s;"></div>
+        </div>
+
+      </div>
+
+      <div class="elist" id="day2">
+
+        <div class="ecard akshada" onclick="flipCard(this)">
+          <div class="ecard-front">
+            <div class="ecard-badge"><span class="bt">12</span><span class="ba">NOON</span></div>
+            <div class="ecard-info">
+              <div class="en">Akshada &amp; Varmala</div>
+              <div class="es">🌺 Blessings · Garland ceremony</div>
+            </div>
+          </div>
+          <div class="ecard-back">
+            <div class="bke">🪷</div>
+            <div class="bkt">The moment two worlds choose each other</div>
+            <div class="bkb">Bring flowers and your most beautiful blessings — this is the beginning of forever.</div>
+          </div>
+          <span class="fh">tap to flip ↩</span>
+        </div>
+
+        <div class="ecard panigrahan" onclick="flipCard(this)">
+          <div class="ecard-front">
+            <div class="ecard-badge"><span class="bt">3</span><span class="ba">PM</span></div>
+            <div class="ecard-info">
+              <div class="en">Panigrahan Sanskar</div>
+              <div class="es">🔥 The Sacred Seven Vows · Pheras</div>
+            </div>
+          </div>
+          <div class="ecard-back">
+            <div class="bke">🔥</div>
+            <div class="bkt">सात फेरे, सात वचन, एक जीवन</div>
+            <div class="bkb">The sacred fire bears witness as two souls promise each other — eternity.</div>
+          </div>
+          <span class="fh">tap to flip ↩</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ── PAGE 4: COUNTDOWN ── -->
+  <div id="page-countdown" class="section" style="padding:70px 20px 100px;min-height:100vh;">
+    <div class="cd-label">Time Until The First Celebration</div>
+    <div class="cd-grid">
+      <div class="cd-box"><span class="cd-num" id="cd-d">000</span><span class="cd-unit">Days</span></div>
+      <div class="cd-box"><span class="cd-num" id="cd-h">00</span><span class="cd-unit">Hours</span></div>
+      <div class="cd-box"><span class="cd-num" id="cd-m">00</span><span class="cd-unit">Mins</span></div>
+      <div class="cd-box"><span class="cd-num" id="cd-s">00</span><span class="cd-unit">Secs</span></div>
+    </div>
+    <div class="fun-quote" id="funQuote">"Loading a love story..."</div>
+    <div class="lm-section">
+      <div class="lm-lbl">RITIKA ❤ SANKET — LOVE METER</div>
+      <div class="lm-bar"><div class="lm-fill" id="lmFill"></div></div>
+      <div class="lm-row"><span>Mild crush</span><span>Soulmates ∞</span></div>
+      <div class="lm-pct" id="lmPct">0%</div>
+      <div class="lm-emoji" id="lmEmoji"></div>
+      <button class="spin-btn" onclick="spinLove()">Measure Again ✦</button>
+    </div>
+    <div style="position:relative;z-index:1;text-align:center;margin-top:4px;">
+      <div style="font-size:10px;letter-spacing:.25em;color:rgba(201,151,58,.65);font-family:'Cinzel',serif;margin-bottom:6px;">VENUE</div>
+      <div style="font-family:'Cinzel Decorative',serif;font-size:20px;color:var(--gold-l);">Sikchi Resort</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.4);margin-top:4px;">Amravati, Maharashtra</div>
+    </div>
+  </div>
+
+
+  <!-- ── PAGE 5: VENUE ── -->
+  <div id="page-venue" class="section" style="padding:70px 20px 100px;">
+    <div class="venue-card">
+      <div class="ph" style="margin-bottom:10px;">✦ Where the magic happens ✦</div>
       <div class="venue-name">Sikchi Resort</div>
-      <div class="venue-city">Amravati, Maharashtra</div>
-    </div>
-    <div class="venue-body">
-      <div class="venue-dates">
-        11 December 2026 · Mehendi · Mahera · Sangeet<br>
-        12 December 2026 · Akshada · Varmala · Panigrahan
+      <div class="venue-sub">Amravati, Maharashtra</div>
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.563106308475!2d77.69548447393339!3d21.010143188420255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd6bd9d97daebcb%3A0x83aa685a78781c5b!2sSikchi%20Resort!5e0!3m2!1sen!2sin!4v1778418135980!5m2!1sen!2sin"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen>
+        </iframe>
       </div>
-      <div class="map-frame">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.563106308475!2d77.69548447393339!3d21.010143188420255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd6bd9d97daebcb%3A0x83aa685a78781c5b!2sSikchi%20Resort!5e0!3m2!1sen!2sin!4v1778418135980!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="venue-address">
+        📍 Sikchi Resort, Amravati<br>
+        Maharashtra, India
       </div>
-      <a class="dir-btn" href="https://maps.app.goo.gl/MHs6oPTjnniRTFKr5" target="_blank">📍 Get Directions ✦</a>
-    </div>
-  </div>
-</div>
+      <a class="directions-btn" href="https://maps.app.goo.gl/MHs6oPTjnniRTFKr5" target="_blank">Get Directions ✦</a>
 
-
-<!-- PAGE 5 · COUNTDOWN -->
-<div id="page-countdown" class="section">
-  <div class="cd-label">TIME UNTIL THE CELEBRATIONS BEGIN</div>
-  <div class="cd-grid">
-    <div class="cd-box"><span class="cd-num" id="cd-d">000</span><span class="cd-unit">DAYS</span></div>
-    <div class="cd-box"><span class="cd-num" id="cd-h">00</span><span class="cd-unit">HRS</span></div>
-    <div class="cd-box"><span class="cd-num" id="cd-m">00</span><span class="cd-unit">MINS</span></div>
-    <div class="cd-box"><span class="cd-num" id="cd-s">00</span><span class="cd-unit">SECS</span></div>
-  </div>
-  <div class="fun-quote" id="funQuote">"A love story written in the stars..."</div>
-  <div class="love-meter">
-    <div class="lm-label">♥ RITIKA &amp; SANKET LOVE METER ♥</div>
-    <div class="lm-track"><div class="lm-fill" id="lmFill"></div></div>
-    <div style="display:flex;justify-content:space-between;margin-bottom:12px;"><span style="font-size:9px;color:rgba(255,255,255,.3);">Mild crush</span><span style="font-size:9px;color:rgba(255,255,255,.3);">∞ Infinite</span></div>
-    <div class="lm-pct" id="lmPct">0%</div>
-    <div class="lm-emoji" id="lmEmoji"></div>
-    <button class="lm-btn" onclick="spinLove()">Measure again ✦</button>
-  </div>
-  <div style="text-align:center;position:relative;z-index:1;">
-    <div style="font-size:9px;letter-spacing:.25em;color:rgba(201,151,58,.6);margin-bottom:8px;">CELEBRATING AT</div>
-    <div style="font-family:'Cinzel Decorative',serif;font-size:18px;color:var(--gold-light);text-shadow:0 0 16px rgba(201,151,58,.3);">Sikchi Resort</div>
-    <div style="font-family:'Dancing Script',cursive;font-size:16px;color:rgba(255,255,255,.4);margin-top:4px;">Amravati, Maharashtra</div>
-  </div>
-</div>
-
-
-<!-- PAGE 6 · RSVP -->
-<div id="page-rsvp" class="section" style="padding:70px 20px 100px;">
-  <div class="rsvp-card">
-    <div class="rph">✦ Will you celebrate with us? ✦</div>
-    <div class="rt">RSVP</div>
-    <div id="rsvpForm">
-      <div class="field"><label>Your Name</label><input type="text" id="rName" placeholder="e.g. Priya Sharma"/></div>
-      <div class="field"><label>WhatsApp Number</label><input type="tel" id="rPhone" placeholder="+91 XXXXX XXXXX"/></div>
-      <div class="field"><label>Number of Guests</label>
-        <select id="rGuests"><option value="">Select</option><option>Just me (1)</option><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5+ guests</option></select>
-      </div>
-      <div style="font-size:10px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;margin-bottom:10px;text-align:left;">Will you attend?</div>
-      <div class="attend-row">
-        <button class="aopt" onclick="setAttend(this,'yes')">🎉 Wouldn't miss it!</button>
-        <button class="aopt" onclick="setAttend(this,'no')">😢 Can't make it</button>
-      </div>
-      <div id="eventsSec">
-        <div style="font-size:10px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;margin-bottom:10px;text-align:left;">Which events?</div>
-        <div class="events-chk">
-          <label class="chi" style="background:#e8f5e0;border-color:#5a8a3c;"><input type="checkbox" value="mehendi"> 🌿 Mehendi Carnival · 11 Dec · 12 PM</label>
-          <label class="chi" style="background:#fffbe0;border-color:#c8a800;"><input type="checkbox" value="mahera"> ☀️ Mahera · 11 Dec · 4 PM</label>
-          <label class="chi" style="background:#0a0a1a;border-color:#00ffee;color:#00ffee;"><input type="checkbox" value="sangeet" style="accent-color:#00ffee;"> 🎶 Sangeet Night · 11 Dec · 7 PM</label>
-          <label class="chi" style="background:#f0e8ff;border-color:#7040c0;"><input type="checkbox" value="akshada"> 💜 Akshada &amp; Varmala · 12 Dec · 12 PM</label>
-          <label class="chi" style="background:#ffe8f5;border-color:#c03080;"><input type="checkbox" value="panigrahan"> 🔥 Panigrahan Sanskar · 12 Dec · 3 PM</label>
+      <div style="margin-top:24px;padding:18px;background:#fffdf5;border-radius:16px;border:1px solid var(--gold-l);text-align:left;">
+        <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.25em;color:var(--gold);margin-bottom:14px;text-align:center;">SCHEDULE AT A GLANCE</div>
+        <div style="font-size:13px;color:var(--text);line-height:2.2;">
+          <div>🌸 <b>11 Dec · 12 PM</b> — Mehendi Carnival</div>
+          <div>💛 <b>11 Dec · 4 PM</b> — Mahera</div>
+          <div>🪩 <b>11 Dec · 7 PM</b> — Sangeet Night</div>
+          <div>🪷 <b>12 Dec · 12 PM</b> — Akshada &amp; Varmala</div>
+          <div>🔥 <b>12 Dec · 3 PM</b> — Panigrahan Sanskar</div>
         </div>
       </div>
-      <div class="field"><label>A message for Ritika &amp; Sanket 💕</label><textarea id="rMsg" rows="3" placeholder="Send them your love and blessings..."></textarea></div>
-      <button class="submit-btn" onclick="submitRSVP()">Send My RSVP ✦</button>
     </div>
-    <div class="rsvp-done" id="rsvpDone">
-      <div class="done-icon">🎊</div>
-      <div class="done-title">Thank You!</div>
-      <div class="done-msg" id="doneMsg"></div>
-      <div class="contact-box">
-        <div style="font-size:10px;letter-spacing:.2em;color:var(--muted);margin-bottom:8px;">CONTACT</div>
-        📞 <strong>Atharva Tapadiya</strong> · +91 8830769867<br>
-        📍 Sikchi Resort, Amravati
+  </div>
+
+
+  <!-- ── PAGE 6: RSVP ── -->
+  <div id="page-rsvp" class="section" style="padding:70px 20px 100px;">
+    <div class="rsvp-card">
+      <div class="ph">✦ Will you celebrate with us? ✦</div>
+      <div style="font-family:'Cinzel Decorative',serif;font-size:26px;color:var(--gold-d);margin-bottom:24px;">RSVP</div>
+
+      <div id="rsvpForm">
+        <div class="rf">
+          <label>Your Full Name</label>
+          <input type="text" id="rName" placeholder="e.g. Priya Sharma"/>
+        </div>
+        <div class="rf">
+          <label>WhatsApp Number</label>
+          <input type="tel" id="rPhone" placeholder="+91 XXXXX XXXXX"/>
+        </div>
+        <div class="rf">
+          <label>Number of Guests</label>
+          <select id="rGuests">
+            <option value="">Select count</option>
+            <option value="Just me (1)">Just me (1)</option>
+            <option value="2 guests">2 guests</option>
+            <option value="3 guests">3 guests</option>
+            <option value="4 guests">4 guests</option>
+            <option value="5+ guests">5+ guests</option>
+          </select>
+        </div>
+
+        <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;margin-bottom:10px;text-align:left;">Will you attend?</div>
+        <div class="attend-row">
+          <button class="aopt" onclick="setAttend(this,'yes')" id="attendYes">🎉 Yes, I'll be there!</button>
+          <button class="aopt" onclick="setAttend(this,'no')" id="attendNo">😢 Can't make it</button>
+        </div>
+
+        <div id="eventsSec" style="display:none;">
+          <span class="ev-chk-lbl">Which events will you attend?</span>
+          <div class="ev-checks">
+            <label class="ev-check"><input type="checkbox" value="Mehendi Carnival (11 Dec · 12 PM)"> 🌸 Mehendi Carnival — 11 Dec, 12 Noon</label>
+            <label class="ev-check"><input type="checkbox" value="Mahera (11 Dec · 4 PM)"> 💛 Mahera — 11 Dec, 4 PM</label>
+            <label class="ev-check"><input type="checkbox" value="Sangeet Night (11 Dec · 7 PM)"> 🪩 Sangeet Night — 11 Dec, 7 PM</label>
+            <label class="ev-check"><input type="checkbox" value="Akshada & Varmala (12 Dec · 12 PM)"> 🪷 Akshada &amp; Varmala — 12 Dec, 12 Noon</label>
+            <label class="ev-check"><input type="checkbox" value="Panigrahan Sanskar (12 Dec · 3 PM)"> 🔥 Panigrahan Sanskar — 12 Dec, 3 PM</label>
+          </div>
+        </div>
+
+        <div class="rf" style="margin-top:16px;">
+          <label>A message for the couple 💕</label>
+          <textarea id="rMsg" rows="3" placeholder="Send your love and blessings..."></textarea>
+        </div>
+
+        <button class="submit-btn" onclick="submitRSVP()">Send My RSVP ✦</button>
+
+        <div style="margin-top:14px;font-size:11px;color:var(--muted);line-height:1.7;">
+          Your RSVP will be sent directly to the wedding family on WhatsApp.<br>
+          📞 Atharva Tapadiya · 8830769867
+        </div>
+      </div>
+
+      <div id="rsvpDone">
+        <div class="done-icon">🎊</div>
+        <div style="font-family:'Cinzel',serif;font-size:16px;color:var(--gold-d);letter-spacing:.1em;">Thank You!</div>
+        <div class="done-msg" id="doneMsg"></div>
+        <div class="contact-box">
+          <div class="ct">Contact for queries</div>
+          <p>📞 Atharva Tapadiya<br>
+          <a href="tel:+918830769867" style="color:var(--gold-d);text-decoration:none;font-weight:700;">+91 88307 69867</a></p>
+        </div>
+        <button class="submit-btn" style="margin-top:14px;" onclick="resetRSVP()">Send Another RSVP</button>
       </div>
     </div>
   </div>
+
+</div><!-- page-wrapper -->
+</div><!-- #app -->
+
+
+<!-- ── BOTTOM NAV ── -->
+<div id="bottomNav" style="display:none;">
+  <button class="ni active" onclick="goTo('page-cover')" id="nav-cover"><span class="ic">🏠</span><span class="nl">Home</span></button>
+  <button class="ni" onclick="goTo('page-family')" id="nav-family"><span class="ic">👨‍👩‍👧</span><span class="nl">Family</span></button>
+  <button class="ni" onclick="goTo('page-events')" id="nav-events"><span class="ic">📅</span><span class="nl">Events</span></button>
+  <button class="ni" onclick="goTo('page-countdown')" id="nav-countdown"><span class="ic">⏳</span><span class="nl">Countdown</span></button>
+  <button class="ni" onclick="goTo('page-venue')" id="nav-venue"><span class="ic">📍</span><span class="nl">Venue</span></button>
+  <button class="ni" onclick="goTo('page-rsvp')" id="nav-rsvp"><span class="ic">✉️</span><span class="nl">RSVP</span></button>
 </div>
 
-</div><!-- /page-wrapper -->
-
-<!-- BOTTOM NAV -->
-<div class="bnav">
-  <button class="bni active" onclick="goToPage('page-cover')"     id="nav-cover"><span class="bni-icon">🏛️</span><span class="bni-label">Invite</span></button>
-  <button class="bni"        onclick="goToPage('page-family')"    id="nav-family"><span class="bni-icon">👪</span><span class="bni-label">Family</span></button>
-  <button class="bni"        onclick="goToPage('page-events')"    id="nav-events"><span class="bni-icon">🎊</span><span class="bni-label">Events</span></button>
-  <button class="bni"        onclick="goToPage('page-venue')"     id="nav-venue"><span class="bni-icon">📍</span><span class="bni-label">Venue</span></button>
-  <button class="bni"        onclick="goToPage('page-countdown')" id="nav-count"><span class="bni-icon">⏳</span><span class="bni-label">Timer</span></button>
-  <button class="bni"        onclick="goToPage('page-rsvp')"      id="nav-rsvp"><span class="bni-icon">✉️</span><span class="bni-label">RSVP</span></button>
-</div>
 
 <script>
-// PETALS
-(function(){
-  const c=document.getElementById('petalLayer');
-  const cols=['#e8d5a3','#f5e8b0','#c9973a','#f0d878','#e8c870','#fff3c0'];
+/* ═══════════ SEAL ═══════════ */
+function breakSeal(){
+  const wrap = document.getElementById('sealWrap');
+  const hint = document.getElementById('sealHint');
+  wrap.classList.add('breaking');
+  hint.textContent = '✨ Opening...';
+  hint.style.animation = 'none';
+
+  // Wax shards burst
+  const screen = document.getElementById('sealScreen');
+  const colors = ['#a03020','#c04030','#7a2010','#d05040','#e06050'];
   for(let i=0;i<22;i++){
-    const p=document.createElement('div');p.className='petal';
-    const s=9+Math.random()*14;
-    p.style.cssText=`left:${Math.random()*100}%;width:${s}px;height:${s*1.4}px;background:${cols[Math.floor(Math.random()*cols.length)]};animation-duration:${7+Math.random()*9}s;animation-delay:${Math.random()*9}s;opacity:.8;`;
+    const s = document.createElement('div');
+    s.className = 'shard';
+    const ang = (i/22)*360, rad = 80+Math.random()*60;
+    const cx = 50, cy = 50;
+    const ex = cx + Math.cos(ang*Math.PI/180)*rad;
+    const ey = cy + Math.sin(ang*Math.PI/180)*rad;
+    s.style.cssText = `
+      left:${cx}%;top:${cy}%;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      width:${10+Math.random()*18}px;height:${8+Math.random()*14}px;
+      opacity:1;
+      transition:all ${0.4+Math.random()*0.3}s ease-out;
+      transform:translate(-50%,-50%) rotate(${Math.random()*360}deg);
+    `;
+    screen.appendChild(s);
+    requestAnimationFrame(()=>{
+      setTimeout(()=>{
+        s.style.left = ex+'%';
+        s.style.top = ey+'%';
+        s.style.opacity = '0';
+        s.style.transform = `translate(-50%,-50%) rotate(${Math.random()*720}deg) scale(0.3)`;
+      },20);
+    });
+    setTimeout(()=>s.remove(), 800);
+  }
+
+  setTimeout(()=>{
+    // Fade out seal screen
+    document.getElementById('sealScreen').style.transition = 'opacity 0.5s ease';
+    document.getElementById('sealScreen').style.opacity = '0';
+    setTimeout(()=>{
+      document.getElementById('sealScreen').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+      document.getElementById('bottomNav').style.display = 'flex';
+      initPetals();
+      initScratch();
+    }, 500);
+  }, 600);
+}
+
+/* ═══════════ PETALS ═══════════ */
+function initPetals(){
+  const c = document.getElementById('petalLayer');
+  const cols = ['#e8b4c0','#f5d5dc','#c9973a','#e8d5a3','#d4a0b0','#f0c8d4','#b8d4a0','#f0e8b0'];
+  for(let i=0;i<20;i++){
+    const p = document.createElement('div');
+    p.className = 'petal';
+    const sz = 10+Math.random()*14;
+    p.style.cssText = `left:${Math.random()*100}%;width:${sz}px;height:${sz*1.3}px;background:${cols[Math.floor(Math.random()*cols.length)]};animation-duration:${7+Math.random()*9}s;animation-delay:${Math.random()*10}s;border-radius:${40+Math.random()*30}% ${60-Math.random()*20}%;opacity:.8;`;
     c.appendChild(p);
   }
-})();
+}
 
-// NAV
-const pageNavMap={'page-cover':'nav-cover','page-family':'nav-family','page-events':'nav-events','page-venue':'nav-venue','page-countdown':'nav-count','page-rsvp':'nav-rsvp'};
-function goToPage(id){
+/* ═══════════ NAVIGATION ═══════════ */
+const navMap = {'page-cover':'nav-cover','page-family':'nav-family','page-events':'nav-events','page-countdown':'nav-countdown','page-venue':'nav-venue','page-rsvp':'nav-rsvp'};
+let cdTimer = null;
+
+function goTo(id){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('.bni').forEach(n=>n.classList.remove('active'));
+  document.querySelectorAll('.ni').forEach(n=>n.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  const ni=document.getElementById(pageNavMap[id]);
-  if(ni) ni.classList.add('active');
+  const nav = document.getElementById(navMap[id]);
+  if(nav) nav.classList.add('active');
   window.scrollTo(0,0);
   if(id==='page-countdown') initCD();
 }
 
-// SCRATCH CARD
-(function(){
-  const cv=document.getElementById('scratchCanvas');
-  const ctx=cv.getContext('2d');
-  let drawing=false,revealed=false;
-  const g=ctx.createLinearGradient(0,0,250,112);
-  g.addColorStop(0,'#c9973a');g.addColorStop(.4,'#e8d5a3');g.addColorStop(.7,'#c9973a');g.addColorStop(1,'#8b6520');
-  ctx.fillStyle=g;
-  if(ctx.roundRect) ctx.roundRect(0,0,250,112,14); else ctx.rect(0,0,250,112);
+/* ═══════════ SCRATCH CARD ═══════════ */
+function initScratch(){
+  const cv = document.getElementById('scratchCanvas');
+  // Match canvas to its container width
+  const container = cv.parentElement.parentElement;
+  const w = container.offsetWidth - 2; // account for border
+  cv.width = w > 0 ? w : 260;
+  const ctx = cv.getContext('2d');
+  let drawing = false, revealed = false;
+
+  const g = ctx.createLinearGradient(0,0,cv.width,108);
+  g.addColorStop(0,'#b8851e');g.addColorStop(.35,'#d4aa40');g.addColorStop(.65,'#c9973a');g.addColorStop(1,'#8b6520');
+  ctx.fillStyle = g;
+  if(ctx.roundRect) ctx.roundRect(0,0,cv.width,108,12);
+  else ctx.rect(0,0,cv.width,108);
   ctx.fill();
-  ctx.fillStyle='rgba(255,248,220,.82)';
-  ctx.font='bold 13px "Cinzel",serif';ctx.textAlign='center';
-  ctx.fillText('✦  SCRATCH TO REVEAL  ✦',125,42);
+
+  ctx.fillStyle='rgba(255,248,220,.85)';
+  ctx.textAlign='center';
+  const mx = cv.width/2;
+  ctx.font='bold 13px "Cinzel",serif';ctx.fillText('✦  SCRATCH TO REVEAL  ✦',mx,40);
   ctx.font='11px "Lato",sans-serif';ctx.fillStyle='rgba(255,248,220,.65)';
-  ctx.fillText('Wedding dates are hidden here',125,66);
-  ctx.font='20px serif';ctx.fillText('🌸  💍  🌸',125,92);
+  ctx.fillText('The wedding dates are hidden inside',mx,64);
+  ctx.font='20px serif';ctx.fillText('🌸  💍  🌸',mx,90);
   ctx.globalCompositeOperation='destination-out';
-  function pos(e){
+
+  function getPos(e){
     const r=cv.getBoundingClientRect(),sx=cv.width/r.width,sy=cv.height/r.height;
-    if(e.touches) return{x:(e.touches[0].clientX-r.left)*sx,y:(e.touches[0].clientY-r.top)*sy};
+    if(e.touches)return{x:(e.touches[0].clientX-r.left)*sx,y:(e.touches[0].clientY-r.top)*sy};
     return{x:(e.clientX-r.left)*sx,y:(e.clientY-r.top)*sy};
   }
-  function draw(e){if(!drawing)return;e.preventDefault();const p=pos(e);ctx.beginPath();ctx.arc(p.x,p.y,24,0,Math.PI*2);ctx.fill();check();}
+  function draw(e){if(!drawing)return;e.preventDefault();const p=getPos(e);ctx.beginPath();ctx.arc(p.x,p.y,24,0,Math.PI*2);ctx.fill();check();}
   function check(){
     if(revealed)return;
-    const d=ctx.getImageData(0,0,250,112).data;let cl=0;
+    const d=ctx.getImageData(0,0,cv.width,108).data;let cl=0;
     for(let i=3;i<d.length;i+=4)if(d[i]===0)cl++;
-    if(cl/(250*112)>0.52){
-      revealed=true;ctx.clearRect(0,0,250,112);
+    if(cl/(cv.width*108)>0.5){
+      revealed=true;ctx.clearRect(0,0,cv.width,108);
       const h=document.getElementById('scratchHint');
-      h.textContent='🎉 Save these dates — 11 & 12 December 2026!';
-      h.style.color='var(--gold-dark)';h.style.animation='none';
+      h.textContent='🎉 11 & 12 December 2026 — Save these dates!';
+      h.style.color='var(--gold-d)';h.style.animation='none';h.style.fontWeight='700';
       confetti();
     }
   }
   cv.addEventListener('mousedown',()=>drawing=true);
   cv.addEventListener('mousemove',draw);
   cv.addEventListener('mouseup',()=>drawing=false);
+  cv.addEventListener('mouseleave',()=>drawing=false);
   cv.addEventListener('touchstart',()=>drawing=true,{passive:false});
   cv.addEventListener('touchmove',draw,{passive:false});
   cv.addEventListener('touchend',()=>drawing=false);
-})();
+}
 
-// CONFETTI
+/* ═══════════ CONFETTI ═══════════ */
 function confetti(){
-  const cols=['#c9973a','#e8d5a3','#f0d060','#8b6520','#fff3c0','#c0a030'];
-  for(let i=0;i<72;i++){
+  const cols=['#c9973a','#e8d5a3','#f0d060','#8b6520','#fff3c0','#c0a030','#e8b4c0','#b8d4a0'];
+  for(let i=0;i<80;i++){
     const el=document.createElement('div');el.className='cfp';
     const s=6+Math.random()*10;
-    el.style.cssText=`left:${5+Math.random()*90}%;top:${Math.random()*30}%;background:${cols[Math.floor(Math.random()*cols.length)]};width:${s}px;height:${s}px;border-radius:${Math.random()>.5?'50%':'2px'};animation:cFall ${1.5+Math.random()*2}s ${Math.random()*.8}s ease-out forwards;`;
-    document.body.appendChild(el);setTimeout(()=>el.remove(),4000);
+    el.style.cssText=`left:${5+Math.random()*90}%;top:${Math.random()*20}%;background:${cols[Math.floor(Math.random()*cols.length)]};width:${s}px;height:${s}px;border-radius:${Math.random()>.5?'50%':'2px'};animation:cFall ${1.5+Math.random()*2.5}s ${Math.random()*0.8}s ease-out forwards;transform:rotate(${Math.random()*360}deg);`;
+    document.body.appendChild(el);setTimeout(()=>el.remove(),5000);
   }
 }
 
-// EVENT FLIP + DAY TABS
+/* ═══════════ EVENT CARDS ═══════════ */
 function flipCard(c){c.classList.toggle('flipped');}
 function switchDay(id,btn){
   document.querySelectorAll('.elist').forEach(l=>l.classList.remove('active'));
@@ -596,36 +919,35 @@ function switchDay(id,btn){
   document.getElementById(id).classList.add('active');btn.classList.add('active');
 }
 
-// COUNTDOWN
+/* ═══════════ COUNTDOWN ═══════════ */
 const quotes=[
   '"Every second that passes is one closer to forever."',
   '"In the story of us — this is the most beautiful chapter."',
   '"Two families, one glorious beginning — almost here!"',
   '"The wait only makes the celebration sweeter."',
   '"Ritika &amp; Sanket — a love story worth every tick of this clock."',
-  '"Amravati is going to witness something magical this December."'
+  '"Amravati will witness something magical this December."',
+  '"Sikchi Resort is getting ready for the grandest love story."'
 ];
-let cdTimer=null;
 function updateCD(){
-  const target=new Date('2026-12-11T12:00:00'),now=new Date(),diff=target-now;
-  if(diff<=0){['cd-d','cd-h','cd-m','cd-s'].forEach(id=>document.getElementById(id).textContent='00');document.getElementById('funQuote').innerHTML='"🎉 The celebrations have begun!"';return;}
-  const days=Math.floor(diff/86400000),hrs=Math.floor((diff%86400000)/3600000),min=Math.floor((diff%3600000)/60000),sec=Math.floor((diff%60000)/1000);
-  document.getElementById('cd-d').textContent=String(days).padStart(3,'0');
-  document.getElementById('cd-h').textContent=String(hrs).padStart(2,'0');
-  document.getElementById('cd-m').textContent=String(min).padStart(2,'0');
-  document.getElementById('cd-s').textContent=String(sec).padStart(2,'0');
-  document.getElementById('funQuote').innerHTML=quotes[sec%quotes.length];
+  const t=new Date('2026-12-11T12:00:00'),now=new Date(),diff=t-now;
+  if(diff<=0){['cd-d','cd-h','cd-m','cd-s'].forEach(x=>{document.getElementById(x).textContent='00';});document.getElementById('funQuote').innerHTML='"🎉 The celebrations have begun!"';return;}
+  const d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
+  document.getElementById('cd-d').textContent=String(d).padStart(3,'0');
+  document.getElementById('cd-h').textContent=String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent=String(s).padStart(2,'0');
+  document.getElementById('funQuote').innerHTML=quotes[s%quotes.length];
 }
 function initCD(){
   updateCD();
-  if(!cdTimer) cdTimer=setInterval(updateCD,1000);
+  if(!cdTimer)cdTimer=setInterval(updateCD,1000);
   setTimeout(()=>{
     document.getElementById('lmFill').style.width='97%';
     animPct(97);
     document.getElementById('lmEmoji').textContent='∞ Infinite · Eternal · Unconditional';
   },500);
 }
-
 function animPct(target){
   let v=0;const iv=setInterval(()=>{v=Math.min(v+2,target);document.getElementById('lmPct').textContent=v+'%';if(v>=target)clearInterval(iv);},28);
 }
@@ -638,29 +960,78 @@ function spinLove(){
   },80);
 }
 
-// RSVP
+/* ═══════════ RSVP — sends to Atharva Tapadiya 8830769867 ═══════════ */
 let attendChoice='';
+
 function setAttend(btn,c){
   attendChoice=c;
   document.querySelectorAll('.aopt').forEach(b=>b.classList.remove('sel'));
   btn.classList.add('sel');
   document.getElementById('eventsSec').style.display=c==='yes'?'block':'none';
+  // Uncheck all if switching to No
+  if(c==='no') document.querySelectorAll('.ev-checks input').forEach(i=>i.checked=false);
 }
+
 function submitRSVP(){
-  const name=document.getElementById('rName').value.trim(),phone=document.getElementById('rPhone').value.trim();
-  if(!name){alert('Please enter your name!');return;}
-  if(!attendChoice){alert('Please tell us if you can attend!');return;}
-  confetti();
-  const dm=document.getElementById('doneMsg');
-  dm.innerHTML=attendChoice==='yes'
-    ?`Dear <strong>${name}</strong>, we are overjoyed you will celebrate with us! 💕<br><br>Sikchi Resort, Amravati is going to be a riot of colour, music and joy on 11 &amp; 12 December 2026. Cannot wait to see you there!<br><br>With all our love,<br><em>Ritika &amp; Sanket 💍</em>`
-    :`Dear <strong>${name}</strong>, we'll miss you terribly! 🥺<br><br>Your blessings and love mean everything to us. We hope to celebrate together very soon!<br><br>With love,<br><em>Ritika &amp; Sanket 💍</em>`;
-  document.getElementById('rsvpForm').style.display='none';
-  document.getElementById('rsvpDone').style.display='flex';
-  if(phone){
-    const msg=`Hi! I'm ${name}. RSVP for Ritika & Sanket's wedding at Sikchi Resort, Amravati (11-12 Dec 2026): ${attendChoice==='yes'?"I'll be there! 🎉":"Sending all my love — can't make it 💕"}`;
-    setTimeout(()=>window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`,'_blank'),2200);
+  const name = document.getElementById('rName').value.trim();
+  const phone = document.getElementById('rPhone').value.trim();
+  const guests = document.getElementById('rGuests').value;
+  const msg = document.getElementById('rMsg').value.trim();
+
+  if(!name){ alert('Please enter your name!'); return; }
+  if(!attendChoice){ alert('Please tell us if you can attend!'); return; }
+
+  // Collect selected events
+  const selectedEvents = [...document.querySelectorAll('.ev-checks input:checked')].map(i=>i.value);
+
+  // Build WhatsApp message
+  let waMsg = `🎊 *RSVP — Ritika weds Sanket*\n`;
+  waMsg += `📅 11 & 12 December 2026 · Sikchi Resort, Amravati\n\n`;
+  waMsg += `👤 *Name:* ${name}\n`;
+  if(phone) waMsg += `📞 *Contact:* ${phone}\n`;
+  if(guests) waMsg += `👥 *Guests:* ${guests}\n`;
+  waMsg += `\n✅ *Attending:* ${attendChoice === 'yes' ? 'YES 🎉' : 'NO 😢 (sending love!)'}\n`;
+
+  if(attendChoice === 'yes' && selectedEvents.length > 0){
+    waMsg += `\n🗓️ *Events I'll attend:*\n`;
+    selectedEvents.forEach(ev => { waMsg += `   • ${ev}\n`; });
+  } else if(attendChoice === 'yes') {
+    waMsg += `\n🗓️ *Events:* Will attend all / TBD\n`;
   }
+
+  if(msg){
+    waMsg += `\n💬 *Message for the couple:*\n"${msg}"\n`;
+  }
+
+  waMsg += `\n🙏 Sent with love & blessings!`;
+
+  // Show success UI first
+  confetti();
+  const dm = document.getElementById('doneMsg');
+  dm.innerHTML = attendChoice === 'yes'
+    ? `Dear <strong>${name}</strong>, we are overjoyed you will celebrate with us! 💕<br><br>Sikchi Resort, Amravati is going to be filled with colour, music and joy on 11 &amp; 12 December 2026. Cannot wait to see you there!<br><br><em>— Ritika &amp; Sanket 💍</em>`
+    : `Dear <strong>${name}</strong>, we will miss you terribly! 🥺<br><br>Your blessings and love mean everything to us. We hope to celebrate together very soon!<br><br><em>— Ritika &amp; Sanket 💍</em>`;
+
+  document.getElementById('rsvpForm').style.display = 'none';
+  document.getElementById('rsvpDone').style.display = 'flex';
+
+  // Open WhatsApp to Atharva Tapadiya: +918830769867
+  const waNumber = '918830769867';
+  const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMsg)}`;
+  setTimeout(()=>{ window.open(waUrl, '_blank'); }, 1200);
+}
+
+function resetRSVP(){
+  attendChoice = '';
+  document.getElementById('rName').value='';
+  document.getElementById('rPhone').value='';
+  document.getElementById('rGuests').value='';
+  document.getElementById('rMsg').value='';
+  document.querySelectorAll('.aopt').forEach(b=>b.classList.remove('sel'));
+  document.querySelectorAll('.ev-checks input').forEach(i=>i.checked=false);
+  document.getElementById('eventsSec').style.display='none';
+  document.getElementById('rsvpForm').style.display='block';
+  document.getElementById('rsvpDone').style.display='none';
 }
 </script>
 </body>
